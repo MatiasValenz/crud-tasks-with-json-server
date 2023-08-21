@@ -1,0 +1,32 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "description": "Crear el modulo de reportes",
+      "createdAt": "2023-08-01T00:00:00.000Z",
+      "dueDate": "2016-02-01T00:00:00.000Z",
+      "isComplete": false
+    },
+    {
+        "id": 2,
+        "description": "Cambiar las pantallas de login",
+        "createdAt": "2023-08-01T00:00:00.000Z",
+        "dueDate": "2016-02-01T00:00:00.000Z",
+        "isComplete": false
+        },
+        {
+        "id": 3,
+        "description": "Actualizar el modulo de seguridad",
+        "createdAt": "2023-08-01T00:00:00.000Z",
+        "dueDate": "2016-02-01T00:00:00.000Z",
+        "isComplete": false
+        },
+        {
+        "id": 4,
+        "description": "Crear el modulo de configuración",
+        "createdAt": "2023-08-01T00:00:00.000Z",
+        "dueDate": "2016-02-01T00:00:00.000Z",
+        "isComplete": false
+        }
+  ]
+}
