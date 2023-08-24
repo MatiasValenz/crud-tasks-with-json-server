@@ -25,4 +25,12 @@ Abra una terminal en la ubicación donde desea clonar el repositorio y ejecute e
 
 ## Tecnologías utilizadas
 
+### Para esta aplicación se utilizaron las siguientes tecnologías:
+
+- Typescript
+- React
+- Redux Toolkit (para el manejo del estado de la aplicación)
+- RTK Query (para el manejo de las peticiones HTTP)
+- JSON Server
+
 
