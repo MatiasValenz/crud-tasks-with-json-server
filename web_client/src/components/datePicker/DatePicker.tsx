@@ -4,7 +4,6 @@ import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {DatePicker as DatePickerMui} from '@mui/x-date-pickers/DatePicker';
 import 'dayjs/locale/es';
 import dayjs from "dayjs";
-import "./style.css"
 import utc from 'dayjs/plugin/utc';
 dayjs.locale('es')
 dayjs.extend(utc);
