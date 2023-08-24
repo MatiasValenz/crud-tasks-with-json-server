@@ -6,12 +6,11 @@ interface DateRangePickerProps {
     fromValue: string | null
     toValue: string | null
     onChange: (date: {from: string | null, to: string | null}) => void
-    disabled?: boolean
     fromLabel?: string
     toLabel?: string
 }
 
-const DateRangePicker: React.FC<DateRangePickerProps> = ({fromValue, toValue,fromLabel, toLabel, onChange, disabled}) => {
+const DateRangePicker: React.FC<DateRangePickerProps> = ({fromValue, toValue,fromLabel, toLabel, onChange}) => {
     const handleChangeFromDate = (date: string)=> {
         onChange({from: date, to: toValue})
     }
