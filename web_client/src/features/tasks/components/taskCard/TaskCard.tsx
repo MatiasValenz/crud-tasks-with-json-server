@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Card, CardContent, Checkbox, CircularProgress, Typography, useTheme} from "@mui/material";
+import {Box, Card, CardContent, CircularProgress, Typography, useTheme} from "@mui/material";
 import DatePicker from "../../../../components/datePicker/DatePicker";
 import UseTaskUpdater from "../../hooks/useTaskUpdater";
 import WatchLaterIcon from "../../../../components/icons/WatchLaterIcon";
