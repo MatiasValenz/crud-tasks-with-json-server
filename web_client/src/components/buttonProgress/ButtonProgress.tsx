@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, CircularProgress} from "@mui/material";
+import {Button, CircularProgress} from "@mui/material";
 import CheckCircleIcon from "../icons/CheckCircleIcon";
 
 interface Props {
