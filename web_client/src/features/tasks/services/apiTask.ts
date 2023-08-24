@@ -1,12 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
-type Task = {
-    id: number
-    description: string
-    createdAt: string
-    dueDate: string
-    isComplete: boolean
-}
 const baseUrl = 'http://localhost:3001';
 export const taskApi = createApi({
     reducerPath: 'taskApi',
