@@ -21,8 +21,8 @@ const Filters: React.FC<FiltersPropsInterface> = ({clearFilter}) => {
         dispatch(setStatusOption(value))
     }
 
-    const handleDescriptionOnChange = (value: string) => {
-        dispatch(setDescriptionOption(value))
+    const handleDescriptionOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setDescriptionOption(e.target.value))
     }
 
     const handleChangeDueDate = (value:{from: string | null, to: string | null}) => {
