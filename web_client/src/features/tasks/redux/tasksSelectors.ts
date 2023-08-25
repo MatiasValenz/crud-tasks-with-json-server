@@ -95,5 +95,5 @@ export const selectTasksOrderAndFilter = createSelector(
     }
 )
 
-
 export const filterOption = (state: RootState) => state.tasks.filterOption
+export const selectOpenFilter = (state: RootState) => state.tasks.openFilter
