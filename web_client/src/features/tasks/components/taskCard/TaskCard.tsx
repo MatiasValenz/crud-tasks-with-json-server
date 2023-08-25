@@ -16,10 +16,6 @@ interface TaskCardProps {
     task: TaskInterface
 }
 
-export const formaterDate = (date: string) => {
-    return date.split("T")[0]
-}
-
 interface IconMap {
     [key: string]: React.ReactNode;
 }
@@ -88,7 +84,7 @@ const TaskCard: React.FC<TaskCardProps> = ({task}) => {
                 </Box>
                 <Box sx={{display: 'flex', gap: 1, alignItems: 'center', flexShrink: 0}}>
                     <DatePicker
-                        value={formaterDate(dueDate)}
+                        value={dueDate}
                         onChange={handleChange}
                         disabled={isComplete || isUpdating}
                     />
