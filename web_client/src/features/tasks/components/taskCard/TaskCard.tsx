@@ -1,7 +1,6 @@
 import React from 'react';
 import {Box, Card, CardContent, CircularProgress, Typography, useTheme} from "@mui/material";
 import DatePicker from "../../../../components/datePicker/DatePicker";
-import UseTaskUpdater from "../../hooks/useTaskUpdater";
 import WatchLaterIcon from "../../../../components/icons/WatchLaterIcon";
 import AlarmIcon from "../../../../components/icons/AlarmIcon";
 import CheckCircleIcon from "../../../../components/icons/CheckCircleIcon";
@@ -11,6 +10,7 @@ import {useAppDispatch} from "../../../../hooks/useStore";
 import {setTasksSelected} from "../../redux/tasksSlice";
 import {blue, green, red, yellow} from "@mui/material/colors";
 import {TaskInterface} from "../../../../interfaces/taskInterface";
+import useTaskUpdater from "../../hooks/useTaskUpdater";
 
 interface TaskCardProps {
     task: TaskInterface
@@ -52,7 +52,7 @@ const TaskCard: React.FC<TaskCardProps> = ({task}) => {
     const theme = useTheme();
     const dispatch = useAppDispatch()
     const {id: taskId, description, dueDate, isComplete, status} = task
-    const {handleUpdateDueDate, isUpdating} = UseTaskUpdater()
+    const {handleUpdateDueDate, isUpdating} = useTaskUpdater()
 
 
     const handleChange = (newDate: string) => {
