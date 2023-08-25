@@ -1,22 +1,38 @@
 import React from 'react';
 import TaskList from "./components/TaskList";
 import {Box, Container, IconButton} from "@mui/material";
-
 import UseTaskUpdater from "./hooks/useTaskUpdater";
 import ButtonProgress from "../../components/buttonProgress/ButtonProgress";
 import {useAppDispatch, useAppSelector} from "../../hooks/useStore";
-import {clearTasksSelected, openFilter, closeFilter, setOrdenOption,clearFilterOption} from "./redux/tasksSlice";
-import {selectOpenFilter, tasksSelected} from "./redux/tasksSelectors";
+import {
+    clearTasksSelected,
+    openFilter,
+    closeFilter,
+    setOrdenOption,
+    clearFilterOption,
+    setFormData, closeCreateTask
+} from "./redux/tasksSlice";
+import {selectFormData, selectOpenCreateTask, selectOpenFilter, tasksSelected} from "./redux/tasksSelectors";
 import MenuOrder from "../../components/menu/Menu";
 import Filters from "./components/filters/Filters";
 import {blue} from "@mui/material/colors";
 import FilterIcon from "../../components/icons/ClearIcon";
+import TaskForm from "./components/taskForm/TaskForm";
+import useTaskCreate from "./hooks/useTaskCreate";
 
 const Tasks = () => {
     const dispatch = useAppDispatch()
     const tasksIds = useAppSelector(tasksSelected)
     const openFilterValue = useAppSelector(selectOpenFilter)
+    const formData = useAppSelector(selectFormData)
+    const openCreateTask = useAppSelector(selectOpenCreateTask)
     const {handleUpdateTaskStatus, isUpdating} = UseTaskUpdater()
+    const {handleCreateTask, isLoading} = useTaskCreate()
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = e.target;
+        const field: "dueDate" | "description" = name as "dueDate" | "description";
+        dispatch(setFormData({field, value}));
+    }
 
     const handleUpdateStatus = () => {
         handleUpdateTaskStatus(tasksIds)
@@ -38,6 +54,11 @@ const Tasks = () => {
     const handleClearFilter = () => {
         dispatch(clearFilterOption())
     }
+
+    const handleCloseCreateTask = () => {
+        dispatch(closeCreateTask())
+    }
+
 
     return (
         <Container component="main" maxWidth="md" sx={{marginBottom: 1}}>
@@ -65,7 +86,20 @@ const Tasks = () => {
                         </IconButton>
                     </Box>
                 </Box>
-                {openFilterValue && <Filters clearFilter={handleClearFilter}/>}
+                {openFilterValue &&
+                  <Filters
+                    clearFilter={handleClearFilter}
+                  />
+                }
+                {openCreateTask &&
+                  <TaskForm
+                    data={formData}
+                    onChange={handleChange}
+                    onSubmit={handleCreateTask}
+                    loading={isLoading}
+                    close={handleCloseCreateTask}
+                  />
+                }
                 <TaskList/>
             </Box>
         </Container>
