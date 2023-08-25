@@ -1,7 +1,7 @@
 import React from 'react';
 import TaskList from "./components/TaskList";
-import {Box, Container, IconButton} from "@mui/material";
-import UseTaskUpdater from "./hooks/useTaskUpdater";
+import {Box, Container, IconButton, Typography} from "@mui/material";
+import useTaskUpdater from "./hooks/useTaskUpdater";
 import ButtonProgress from "../../components/buttonProgress/ButtonProgress";
 import {useAppDispatch, useAppSelector} from "../../hooks/useStore";
 import {
@@ -19,6 +19,7 @@ import {blue} from "@mui/material/colors";
 import FilterIcon from "../../components/icons/ClearIcon";
 import TaskForm from "./components/taskForm/TaskForm";
 import useTaskCreate from "./hooks/useTaskCreate";
+import dayjs from "dayjs";
 
 const Tasks = () => {
     const dispatch = useAppDispatch()
@@ -26,8 +27,11 @@ const Tasks = () => {
     const openFilterValue = useAppSelector(selectOpenFilter)
     const formData = useAppSelector(selectFormData)
     const openCreateTask = useAppSelector(selectOpenCreateTask)
-    const {handleUpdateTaskStatus, isUpdating} = UseTaskUpdater()
+    const {handleUpdateTaskStatus, isUpdating} = useTaskUpdater()
     const {handleCreateTask, isLoading} = useTaskCreate()
+
+    const currentDate = dayjs().format('DD/MM/YYYY')
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const {name, value} = e.target;
         const field: "dueDate" | "description" = name as "dueDate" | "description";
@@ -61,8 +65,16 @@ const Tasks = () => {
 
 
     return (
-        <Container component="main" maxWidth="md" sx={{marginBottom: 1}}>
-            <h1>Cosas por hacer</h1>
+        <Container component="main" maxWidth="md" sx={{marginBottom: 2, marginTop: 2}}>
+            <Box sx={{display: 'flex', gap: 1, justifyContent: 'space-between', alignItems: 'center'}}>
+                <Typography component="h1" variant="h5">
+                    Cosas por hacer
+                </Typography>
+                <Typography component="div" variant="subtitle1">
+                   Hoy: {currentDate}
+                </Typography>
+            </Box>
+
             <Box sx={{display: 'flex', flexDirection: "column", gap: 1}}>
                 <Box sx={{display: 'flex', gap: 1, justifyContent: 'space-between', alignItems: 'center'}}>
                     <ButtonProgress
