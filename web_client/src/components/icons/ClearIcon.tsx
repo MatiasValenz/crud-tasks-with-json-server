@@ -1,18 +1,14 @@
 import React from 'react';
 import {IconPropsInterface} from "./IconPropsInterface";
 
-const ClearIcon: React.FC<IconPropsInterface> = ({width, height, color}) => {
+const FilterIcon: React.FC<IconPropsInterface> = ({width, height, color}) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" enableBackground="new 0 0 24 24" height={height} viewBox="0 0 24 24"
-             width={width} fill={color}>
-            <g>
-                <path d="M0,0h24 M24,24H0" fill="none"/>
-                <path
-                    d="M7,6h10l-5.01,6.3L7,6z M4.25,5.61C6.27,8.2,10,13,10,13v6c0,0.55,0.45,1,1,1h2c0.55,0,1-0.45,1-1v-6 c0,0,3.72-4.8,5.74-7.39C20.25,4.95,19.78,4,18.95,4H5.04C4.21,4,3.74,4.95,4.25,5.61z"/>
-                <path d="M0,0h24v24H0V0z" fill="none"/>
-            </g>
+        <svg width={width} height={height} viewBox="0 0 65 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M1 6.64C1.4 7.16 23.96 35.96 23.96 35.96V60C23.96 62.2 25.76 64 28 64H36.04C38.24 64 40.08 62.2 40.08 60V35.92C40.08 35.92 62.04 7.84 63.08 6.56C64.12 5.28 64 4 64 4C64 1.8 62.2 0 59.96 0H4.04C1.6 0 0 1.92 0 4C0 4.8 0.24 5.76 1 6.64Z"
+                fill={color}/>
         </svg>
     )
 };
 
-export default ClearIcon;
+export default FilterIcon;
