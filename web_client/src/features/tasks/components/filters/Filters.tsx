@@ -10,7 +10,10 @@ import {setDescriptionOption, setDueDateOption, setStatusOption} from "../../red
 import {useAppDispatch, useAppSelector} from "../../../../hooks/useStore";
 import {filterOption} from "../../redux/tasksSelectors";
 
-const Filters = () => {
+interface FiltersPropsInterface {
+    clearFilter: () => void
+}
+const Filters: React.FC<FiltersPropsInterface> = ({clearFilter}) => {
     const dispatch = useAppDispatch()
     const {status, description, dueDate} = useAppSelector(filterOption)
 
@@ -39,7 +42,9 @@ const Filters = () => {
                     <Typography component="div" variant="h6">
                         Filtrar por:
                     </Typography>
-                    <IconButton aria-label="refresh">
+                    <IconButton
+                    onClick={clearFilter}
+                    >
                         <Refresh
                             width={24}
                             height={24}
