@@ -9,7 +9,8 @@ export interface TaskState {
     ordenOption: {
         orderBy: 'createdAt' | 'dueDate' | 'status',
         order: string,
-    }
+    },
+    openFilter: boolean,
     filterOption: {
         status: statusTypes | "All",
         dueDate: {
