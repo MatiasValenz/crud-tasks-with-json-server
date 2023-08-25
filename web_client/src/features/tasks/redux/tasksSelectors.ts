@@ -50,13 +50,13 @@ export const selectTasksOrder = createSelector(
                 return newTasks.sort((a, b) => {
                     const aDay = getDay(a[ordenOption.orderBy])
                     const bDay = getDay(b[ordenOption.orderBy])
-                    return aDay.diff(bDay, 'day')
+                    return aDay.diff(bDay)
                 })
             } else {
                 return newTasks.sort((a, b) => {
                     const aDay = getDay(a[ordenOption.orderBy])
                     const bDay = getDay(b[ordenOption.orderBy])
-                    return bDay.diff(aDay, 'day')
+                    return bDay.diff(aDay)
                 })
             }
         } else {
@@ -81,7 +81,7 @@ export const selectTasksOrderAndFilter = createSelector(
         if (from && to) {
             filteredTasks = filteredTasks.filter((task) => {
                 const taskDueDate = getDay(task.dueDate)
-                const fromDate = getDay(from).endOf('day')
+                const fromDate = getDay(from)
                 const toDate = getDay(to)
                 return taskDueDate.isAfter(fromDate) && taskDueDate.isBefore(toDate)
             })
