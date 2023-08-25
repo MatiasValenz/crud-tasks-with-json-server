@@ -5,6 +5,7 @@ export interface TaskState {
         description: string,
         dueDate: string,
     },
+    openCreateTask: boolean,
     tasksSelected: number[],
     ordenOption: {
         orderBy: 'createdAt' | 'dueDate' | 'status',
