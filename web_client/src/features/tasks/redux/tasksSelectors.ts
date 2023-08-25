@@ -97,3 +97,6 @@ export const selectTasksOrderAndFilter = createSelector(
 
 export const filterOption = (state: RootState) => state.tasks.filterOption
 export const selectOpenFilter = (state: RootState) => state.tasks.openFilter
+export const selectFormData = (state: RootState) => state.tasks.formData
+
+export const selectOpenCreateTask = (state: RootState) => state.tasks.openCreateTask
