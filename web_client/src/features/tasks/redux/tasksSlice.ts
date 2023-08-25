@@ -11,6 +11,7 @@ const initialState: TaskState = {
         orderBy: 'createdAt', // Order initial
         order: 'desc',
     },
+    openFilter: false,
     filterOption: {
         status: "All",
         dueDate: {
@@ -51,6 +52,15 @@ export const taskSlice = createSlice({
         },
         setDueDateOption: (state, action) => {
             state.filterOption.dueDate = action.payload;
+        },
+        clearFilterOption: (state) => {
+            state.filterOption = initialState.filterOption;
+        },
+        openFilter: (state) => {
+            state.openFilter = true;
+        },
+        closeFilter: (state) => {
+            state.openFilter = false;
         }
 
     }
@@ -65,7 +75,10 @@ export const {
     setOrdenOption,
     setStatusOption,
     setDescriptionOption,
-    setDueDateOption
+    setDueDateOption,
+    clearFilterOption,
+    openFilter,
+    closeFilter
 } = taskSlice.actions;
 
 
