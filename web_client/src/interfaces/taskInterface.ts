@@ -1,5 +1,5 @@
 export interface TaskInterface {
-    id: number
+    id: string
     description: string
     createdAt: string
     dueDate: string
