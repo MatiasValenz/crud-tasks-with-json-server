@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {TaskState} from "../../../interfaces/taskState";
 
 const initialState: TaskState = {
@@ -6,6 +6,7 @@ const initialState: TaskState = {
         description: '',
         dueDate: '',
     },
+    openCreateTask: false,
     tasksSelected: [],
     ordenOption: {
         orderBy: 'createdAt', // Order initial
@@ -27,8 +28,21 @@ export const taskSlice = createSlice({
     name: 'task',
     initialState,
     reducers: {
-        setFormData: (state, action) => {
-            state.formData = action.payload;
+        setFormData: (state, action: PayloadAction<{ field: keyof TaskState["formData"]; value: string }>) => {
+            const { field, value } = action.payload;
+            if (field === "description" || field === "dueDate") {
+                state.formData[field] = value;
+            }
+            state.formData[field] = value;
+        },
+        clearFormData: (state) => {
+            state.formData = initialState.formData;
+        },
+        openCreateTask: (state) => {
+            state.openCreateTask = true;
+        },
+        closeCreateTask: (state) => {
+            state.openCreateTask = false;
         },
         setTasksSelected: (state, action) => {
             const {taskId, checked} = action.payload;
@@ -62,7 +76,6 @@ export const taskSlice = createSlice({
         closeFilter: (state) => {
             state.openFilter = false;
         }
-
     }
 })
 
@@ -70,6 +83,9 @@ export const taskReducer = taskSlice.reducer;
 
 export const {
     setFormData,
+    clearFormData,
+    openCreateTask,
+    closeCreateTask,
     setTasksSelected,
     clearTasksSelected,
     setOrdenOption,
