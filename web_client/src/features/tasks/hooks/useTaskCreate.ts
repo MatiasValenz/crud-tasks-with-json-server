@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../../hooks/useStore";
 import {selectFormData} from "../redux/tasksSelectors";
 import { v4 as uuidv4 } from "uuid";
 import {clearFormData} from "../redux/tasksSlice";
+import dayjs from "dayjs";
 
 const useTaskCreate = () => {
     const dispatch = useAppDispatch()
@@ -11,12 +12,14 @@ const useTaskCreate = () => {
     const {description, dueDate} = formData
     const newId = uuidv4()
 
+    const createdAt = dayjs().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]')
+
     // Create a new task object
     const newTask = {
         id: newId,
         description,
         dueDate,
-        createdAt: new Date().toISOString(),
+        createdAt,
         isComplete: false,
     }
     const handleCreateTask = async () => {
