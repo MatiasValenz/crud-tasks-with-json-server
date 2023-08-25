@@ -5,5 +5,5 @@ interface GetDay {
 }
 
 export const getDay: GetDay = (date) => {
-    return dayjs(date).startOf('day');
+    return dayjs(date).utc();
 }
