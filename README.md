@@ -1,6 +1,8 @@
 # crud-tasks-with-json-server
 Aplicación que permite la gestion de tareas
 
+![project.PNG](images%2Fproject.PNG)
+
 ## Pasos de instalación
 
 ### 1. Clonar el repositorio:
