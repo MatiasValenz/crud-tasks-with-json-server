@@ -4,19 +4,28 @@ import {TextField} from "@mui/material";
 interface CustomTextFieldProps {
     label: string
     value: string
-    onChange: (value: string) => void
+    name?: string
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
     disabled?: boolean
     fullWidth?: boolean
+    multiline?: boolean
 }
-const CustomTextField: React.FC<CustomTextFieldProps> = ({label, value, onChange, disabled, fullWidth}) => {
+const CustomTextField: React.FC<CustomTextFieldProps> = ({label, value,name, onChange, disabled, fullWidth,multiline}) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange(e)
+    }
+
     return (
         <TextField
             variant="outlined"
             label={label}
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            name={name}
+            onChange={handleChange}
             disabled={disabled}
             fullWidth={fullWidth}
+            multiline={multiline}
+            rows={4}
         />
     );
 };
