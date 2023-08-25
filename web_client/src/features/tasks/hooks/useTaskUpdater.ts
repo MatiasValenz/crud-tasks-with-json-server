@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {useUpdateTaskMutation} from "../services/apiTask";
 
-const UseTaskUpdater = () => {
+const useTaskUpdater = () => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [updateTask] = useUpdateTaskMutation();
 
-    const handleUpdateDueDate = async (date: string, id: number) => {
+    const handleUpdateDueDate = async (date: string, id: string) => {
         setIsUpdating(true);
         try {
             await updateTask({id, dueDate: date})
@@ -34,4 +34,4 @@ const UseTaskUpdater = () => {
 
 };
 
-export default UseTaskUpdater;
+export default useTaskUpdater;
